@@ -7,22 +7,36 @@
 qgis_meancoordinates(input, output, weight = NA, category = NA)
 }
 \arguments{
-\item{input}{Input layer. Must be target source or simple feature}
+\item{input}{<chr> or object
+Input layer. Must be target source or simple feature}
 
-\item{output}{Destination of output file}
+\item{output}{<chr>
+Destination of output file}
 
-\item{weight}{attribute can be specified as containing weights. String}
+\item{weight}{<chr>
+attribute can be specified as containing weights. String}
 
-\item{category}{attribute can be specified as containing categories}
+\item{category}{<chr>
+attribute can be specified as containing categories}
 }
 \value{
 simple feature, geojson, or shapefile
 }
 \description{
-This algorithm computes a point layer with the center of mass of 
-geometries in an input layer. An attribute can be specified as containing weights 
-to be applied to each feature when computing the center of mass. If an categorical attribute 
-is selected in the category field, features will be grouped according to values in 
-this field. Instead of a single point with the center of mass of the whole layer, 
+This algorithm computes a point layer with the center of mass of
+geometries in an input layer. An attribute can be specified as containing weights
+to be applied to each feature when computing the center of mass. If an categorical attribute
+is selected in the category field, features will be grouped according to values in
+this field. Instead of a single point with the center of mass of the whole layer,
 the output layer will contain a center of mass for the features in each category.
+}
+\examples{
+qgis_meancoordinates(input = 'C://Documents/Spatial/cities.geojson',
+                     output = 'C://Documents/Spatial/meancoordinate.geojson',
+                     weight = 'Population')
+
+qgis_meancoordinates(input = 'C://Documents/Spatial/Counties.geojson',
+                     output = 'C://Documents/Spatial/meancoordinate.geojson',
+                     category = 'COUNTY_NAME')
+
 }

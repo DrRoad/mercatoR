@@ -7,23 +7,40 @@
 qgis_pointslayerfromtable(input, output, xfield, yfield, crs = "EPSG:4326")
 }
 \arguments{
-\item{input}{csv file location. string}
+\item{input}{<chr>
+csv file location. string}
 
-\item{output}{string file destination. .geojson or .shp}
+\item{output}{<chr>
+string file destination. .geojson or .shp}
 
-\item{xfield}{csv column containing X coordinate. String}
+\item{xfield}{<chr>
+csv column containing X coordinate. String}
 
-\item{yfield}{csv column containing Y coordinate. String}
+\item{yfield}{<chr>
+csv column containing Y coordinate. String}
 
-\item{crs}{Coordinate reference system. Defualt is 'EPSG:4326'}
+\item{crs}{<chr>
+Coordinate reference system. Defualt is 'EPSG:4326'.}
 }
 \value{
-simple feature, geojson, or shapefile
+simple feature, geojson, or shapefile(.shp)
 }
 \description{
-Point Layer from Table
+This algorithm generates a points layer based on the values from an
+input table.
+
+The table must contain a field with the X coordinate of each point
+and another one with the Y coordinate. A CRS for the output layer has to be specified,
+and the coordinates in the table are assumed to be expressed in the units used
+by that CRS.
+
+The attributes table of the resulting layer will be the input table.
 }
 \examples{
-
+qgis_pointslayerfromtable(input = 'C://Documents/Spatial/cities.csv',
+                          output = 'C://Documents/Spatial/cities.shp',
+                          xfield = 'mE',
+                          yfield = 'mN',
+                          crs = 'EPSG:102285')
 
 }

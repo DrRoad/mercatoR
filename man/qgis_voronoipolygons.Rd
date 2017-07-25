@@ -7,23 +7,30 @@
 qgis_voronoipolygons(input, output, buffer = 0)
 }
 \arguments{
-\item{input}{Input point layer. Must be target source or simple feature}
+\item{input}{<chr> or object
+Input point layer. Must be desination file or simple feature}
 
-\item{output}{destination of output file}
+\item{output}{<chr>
+destination of output file}
 
-\item{buffer}{Buffer setting. Defult is 0}
+\item{buffer}{<Num>
+Buffer setting. Defult is 0}
 }
 \value{
 simple feature, geojson, or shapefile
 }
+\description{
+This algorithm takes a points layer and generates a polygon layer containing
+ the voronoi polygons corresponding to those input points.
+}
 \examples{
 qgis_voronoipolygons(input = 'C://Documents/Spatial/Points.geojson',
-                               output = 'C://Documents/Spatial/Voronoi.geojson', 
+                               output = 'C://Documents/Spatial/Voronoi.geojson',
                                buffer = 0)
-                               
+
 qgis_voronoipolygons(input = Points,
-                     output = 'C://Documents/Spatial/Voronoi.geojson', 
-                     buffer = 0)                    
+                     output = 'C://Documents/Spatial/Voronoi.geojson',
+                     buffer = 0)
 
 
 

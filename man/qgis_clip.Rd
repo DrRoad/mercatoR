@@ -7,21 +7,31 @@
 qgis_clip(input, overlay, output)
 }
 \arguments{
-\item{input}{Target layer. Use either a string file destination or simple feature dataframe}
+\item{input}{<chr> or object
+Target layer. Use either a file destination or simple feature dataframe}
 
-\item{overlay}{Object you will use to clip the target layer. Use either a string file destination or simple feature dataframe}
+\item{overlay}{<chr> or object
+Object you will use to clip the target layer. Use either a file destination or simple feature dataframe}
 
-\item{output}{string file destination. .geojson or .shp}
+\item{output}{<chr>
+file destination. .geojson or .shp}
 }
 \value{
 simple feature, geojson, or shapefile
 }
 \description{
-This algorithm clips a vector layer using the polygons of an 
-additional polygons layer. Only the parts of the features in the input layer 
-that falls within the polygons of the clipping layer will be added to the 
+This algorithm clips a vector layer using the polygons of an
+additional polygons layer. Only the parts of the features in the input layer
+that falls within the polygons of the clipping layer will be added to the
 resulting layer.
 }
 \examples{
+qgis_clip(input = US_Roads,
+          overlay = Maryland,
+          output = 'C://Documents/Spatial/maryland_roads.shp')
+
+qgis_clip(input = 'C://Documents/Spatial/US_Roads.shp',
+          overlay = 'C://Documents/Spatial/Maryland.shp',
+          output = 'C://Documents/Spatial/maryland_roads.shp')
 
 }

@@ -7,21 +7,34 @@
 qgis_countpointsinpolygon(polygon, points, field = "Count", output)
 }
 \arguments{
-\item{polygon}{Target layer. Use either a string file destination or simple feature dataframe}
+\item{polygon}{<chr> or object
+Target layer. Use either a file destination or simple feature dataframe}
 
-\item{points}{Point layer you are counting. Use either a string file destination or simple feature dataframe}
+\item{points}{<chr> or object
+Point layer you are counting. Use either a string file destination or simple feature dataframe}
 
-\item{field}{Name of new atrribute column. string}
+\item{field}{<chr>
+Name of new atrribute column}
 
-\item{output}{string file destination. .geojson or .shp}
+\item{output}{<chr>
+file destination. .geojson or .shp}
 }
 \value{
 simple feature, geojson, or shapefile
 }
 \description{
+This algorithm takes a points layer and a polygon layer and counts
+the number of points from the first one in each polygons of the second one.
 
+A new polygons layer is generated, with the exact same content as the input
+polygons layer, but containing an additional field with the points count corresponding
+to each polygon.
 }
 \examples{
+qgis_countpointsinpolygon(polygon = Census_Tracts,
+                          points = Gunshots,
+                          field = 'Count',
+                          output = 'C://Documents/Spatial/shots_per_tract.shp')
 
 
 }
