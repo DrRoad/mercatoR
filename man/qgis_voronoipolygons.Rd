@@ -21,9 +21,9 @@ qgis_voronoipolygons(input = 'C://Documents/Spatial/Points.geojson',
                                output = 'C://Documents/Spatial/Voronoi.geojson', 
                                buffer = 0)
                                
-         qgis_voronoipolygons(input = Points,
-                              output = 'C://Documents/Spatial/Voronoi.geojson', 
-                               buffer = 0)                    
+qgis_voronoipolygons(input = Points,
+                     output = 'C://Documents/Spatial/Voronoi.geojson', 
+                     buffer = 0)                    
 
 
 

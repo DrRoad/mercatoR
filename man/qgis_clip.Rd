@@ -17,7 +17,10 @@ qgis_clip(input, overlay, output)
 simple feature, geojson, or shapefile
 }
 \description{
-Clip vectors by polygon
+This algorithm clips a vector layer using the polygons of an 
+additional polygons layer. Only the parts of the features in the input layer 
+that falls within the polygons of the clipping layer will be added to the 
+resulting layer.
 }
 \examples{
 

@@ -3,7 +3,10 @@
 
 #' @title QGIS Clip
 #'
-#' @description Clip vectors by polygon
+#' @description This algorithm clips a vector layer using the polygons of an 
+#' additional polygons layer. Only the parts of the features in the input layer 
+#' that falls within the polygons of the clipping layer will be added to the 
+#' resulting layer.
 #'
 #' @param input Target layer. Use either a string file destination or simple feature dataframe
 #' @param overlay Object you will use to clip the target layer. Use either a string file destination or simple feature dataframe
@@ -26,6 +29,7 @@ qgis_clip <- function(input, overlay, output) {
 }
 
 #' @title Count point in polygons
+#' @description 
 #'
 #' @param polygon Target layer. Use either a string file destination or simple feature dataframe
 #' @param points Point layer you are counting. Use either a string file destination or simple feature dataframe
@@ -81,6 +85,40 @@ qgis_pointslayerfromtable <- function(input, output, xfield, yfield, crs = 'EPSG
                                    load_output = TRUE)
 }
 
+#' @title Mean Coordinate(s)
+#'
+#' @description This algorithm computes a point layer with the center of mass of 
+#' geometries in an input layer. An attribute can be specified as containing weights 
+#' to be applied to each feature when computing the center of mass. If an categorical attribute 
+#' is selected in the category field, features will be grouped according to values in 
+#' this field. Instead of a single point with the center of mass of the whole layer, 
+#' the output layer will contain a center of mass for the features in each category.
+#'  
+#' @param input Input layer. Must be target source or simple feature
+#' @param output Destination of output file
+#' @param weight attribute can be specified as containing weights. String
+#' @param category attribute can be specified as containing categories
+#'
+#' @return simple feature, geojson, or shapefile
+#' @export
+#'
+#' @examples
+qgis_meancoordinates <- function(input, output, weight = NA, category = NA) {
+  
+  param <- get_args_man(alg = 'qgis:meancoordinates')
+  
+  param$POINTS <- input
+  param$WEIGHT <- weight 
+  param$UID <- category
+  param$OUTPUT <- output
+    
+  
+  
+  selectbylocation <- run_qgis(alg = "qgis:meancoordinates",
+                                   params = param,
+                                   load_output = TRUE)
+  
+}
 
 #' @title Create Voronoi Polygons
 #'
@@ -95,9 +133,9 @@ qgis_pointslayerfromtable <- function(input, output, xfield, yfield, crs = 'EPSG
 #'                                output = 'C://Documents/Spatial/Voronoi.geojson', 
 #'                                buffer = 0)
 #'                                
-#'          qgis_voronoipolygons(input = Points,
-#'                               output = 'C://Documents/Spatial/Voronoi.geojson', 
-#'                                buffer = 0)                    
+#' qgis_voronoipolygons(input = Points,
+#'                      output = 'C://Documents/Spatial/Voronoi.geojson', 
+#'                      buffer = 0)                    
 #' 
 #' 
 #' 
