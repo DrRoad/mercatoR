@@ -32,7 +32,9 @@ qgis_clip <- function(input, overlay, output) {
   param$OVERLAY <- overlay
   param$OUTPUT <- output
 
-  clip <- RQGIS::run_qgis(alg = "qgis:clip", params = param, load_output = TRUE)
+  clip <- RQGIS::run_qgis(alg = "qgis:clip",
+                          params = param,
+                          load_output = TRUE)
 }
 
 #' @title Count point in polygons
@@ -122,6 +124,45 @@ qgis_pointslayerfromtable <- function(input, output, xfield, yfield, crs = 'EPSG
   pointslayerfromtable <- RQGIS::run_qgis(alg = "qgis:pointslayerfromtable",
                                    params = param,
                                    load_output = TRUE)
+}
+
+#' @title Polygon centroids
+#' @description This algorithm creates a new point layer, with points
+#' representing the centroid of polygons of an input layer.
+#'
+#' The attributes associated to each point in the output layer are the
+#'  same ones associated to the original polygon.
+#'
+#' @param input <chr> or object
+#' Target layer. Use either a file destination or simple feature dataframe
+#' @param output <chr>
+#' Destination of output file
+#'
+#'
+#' @return
+#' simple feature, geojson, or shapefile
+#'
+#' @export
+#'
+#' @examples
+#'
+#' qgis_polygoncentroids(census_tracts,
+#'                       'C://Documents/Spatial/centroid.geojson')
+#'
+#' qgis_polygoncentroids('C://Documents/Spatial/census_tracts.geojson',
+#'                       'C://Documents/Spatial/centroid.geojson')
+#'
+#'
+qgis_polygoncentroids <- function(input, output) {
+  param <- get_args_man('qgis:polygoncentroids')
+
+  param$INPUT_LAYER <- input
+  param$OUTPUT_LAYER <- output
+
+  polygoncentroids <- RQGIS::run_qgis(alg = "qgis:polygoncentroids",
+                                      params = param,
+                                      load_output = TRUE)
+
 }
 
 #' @title Mean Coordinate(s)
