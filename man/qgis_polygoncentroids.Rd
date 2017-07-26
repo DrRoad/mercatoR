@@ -7,7 +7,7 @@
 qgis_polygoncentroids(input, output)
 }
 \arguments{
-\item{input}{<chr> or object
+\item{input}{<chr> or simple feature object
 Target layer. Use either a file destination or simple feature dataframe}
 
 \item{output}{<chr>

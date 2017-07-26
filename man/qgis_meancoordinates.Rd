@@ -7,7 +7,7 @@
 qgis_meancoordinates(input, output, weight = NA, category = NA)
 }
 \arguments{
-\item{input}{<chr> or object
+\item{input}{<chr> or simple feature object
 Input layer. Must be target source or simple feature}
 
 \item{output}{<chr>

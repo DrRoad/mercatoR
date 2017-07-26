@@ -7,10 +7,10 @@
 qgis_countpointsinpolygon(polygon, points, field = "Count", output)
 }
 \arguments{
-\item{polygon}{<chr> or object
+\item{polygon}{<chr> or simple feature object
 Target layer. Use either a file destination or simple feature dataframe}
 
-\item{points}{<chr> or object
+\item{points}{<chr> or simple feature object
 Point layer you are counting. Use either a string file destination or simple feature dataframe}
 
 \item{field}{<chr>

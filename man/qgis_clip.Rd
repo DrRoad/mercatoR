@@ -7,7 +7,7 @@
 qgis_clip(input, overlay, output)
 }
 \arguments{
-\item{input}{<chr> or object
+\item{input}{<chr> or simple feature object
 Target layer. Use either a file destination or simple feature dataframe}
 
 \item{overlay}{<chr> or object

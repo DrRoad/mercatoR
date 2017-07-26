@@ -5,7 +5,7 @@
 #' that falls within the polygons of the clipping layer will be added to the
 #' resulting layer.
 #'
-#' @param input <chr> or object
+#' @param input <chr> or simple feature object
 #' Target layer. Use either a file destination or simple feature dataframe
 #' @param overlay <chr> or object
 #' Object you will use to clip the target layer. Use either a file destination or simple feature dataframe
@@ -45,9 +45,9 @@ qgis_clip <- function(input, overlay, output) {
 #' polygons layer, but containing an additional field with the points count corresponding
 #' to each polygon.
 #'
-#' @param polygon <chr> or object
+#' @param polygon <chr> or simple feature object
 #' Target layer. Use either a file destination or simple feature dataframe
-#' @param points <chr> or object
+#' @param points <chr> or simple feature object
 #' Point layer you are counting. Use either a string file destination or simple feature dataframe
 #' @param field <chr>
 #' Name of new atrribute column
@@ -76,6 +76,49 @@ qgis_countpointsinpolygon <- function(polygon, points, field = 'Count', output){
   countpointsinpolygon <- RQGIS::run_qgis(alg = "qgis:countpointsinpolygon",
                                    params = param,
                                    load_output = TRUE)
+}
+
+#' @title Fixed distance buffer
+#'
+#' @description This algorithm computes a buffer area for all the features in an input layer, using a fixed distance.
+#'
+#' @param input <chr> or simple feature object
+#' Target layer. Use either a file destination or simple feature dataframe
+#' @param output <chr>
+#' Use a string file destination
+#' @param distance <num>
+#' Distance units are equivelent to coordinate system units of input shapefile/geojson/sf
+#' @param segments <num>
+#' Numeric value which determines how many segments are used to draw each section of the buffer. A higher value gives a smoother shape
+#' @param dissolve <boolean>
+#' TRUE or FALSE. TRUE dissolves all buffers into one continous polygon
+#'
+#' @return simple feature, geojson, or shapefile(.shp)
+#' @export
+#'
+#' @examples
+#' qgis_fixeddistancebuffer(input = 'G:/DC Policy Center/DC_One/Data/Spatial/Metro_GIS_shapefiles/Line.shp',
+#'                          output = 'G:/DC Policy Center/DC_One/Data/Spatial/Metro_GIS_shapefiles/buffer.shp',
+#'                          distance = 1000)
+#'
+#' qgis_fixeddistancebuffer(input = Lines,
+#'                          output = 'G:/DC Policy Center/DC_One/Data/Spatial/Metro_GIS_shapefiles/buffer.shp',
+#'                          distance = 1000)
+#'
+#'
+qgis_fixeddistancebuffer <- function(input, output, distance, segments = 5, dissolve = FALSE) {
+
+  param <- RQGIS::get_args_man('qgis:fixeddistancebuffer')
+
+  param$INPUT <- input
+  param$OUTPUT <- output
+  param$DISTANCE <- distance
+  param$SEGMENTS <- segments
+  param$DISSOLVE <- dissolve
+
+  fixeddistancebuffer <- RQGIS::run_qgis(alg = 'qgis:fixeddistancebuffer',
+                                         params = param,
+                                         load_output = TRUE)
 }
 
 #' @title Point Layer from Table
@@ -111,6 +154,7 @@ qgis_countpointsinpolygon <- function(polygon, points, field = 'Count', output){
 #'                           yfield = 'mN',
 #'                           crs = 'EPSG:102285')
 #'
+#'
 qgis_pointslayerfromtable <- function(input, output, xfield, yfield, crs = 'EPSG:4326'){
 
   param <- RQGIS::get_args_man(alg = 'qgis:pointslayerfromtable')
@@ -133,7 +177,7 @@ qgis_pointslayerfromtable <- function(input, output, xfield, yfield, crs = 'EPSG
 #' The attributes associated to each point in the output layer are the
 #'  same ones associated to the original polygon.
 #'
-#' @param input <chr> or object
+#' @param input <chr> or simple feature object
 #' Target layer. Use either a file destination or simple feature dataframe
 #' @param output <chr>
 #' Destination of output file
@@ -174,7 +218,7 @@ qgis_polygoncentroids <- function(input, output) {
 #' this field. Instead of a single point with the center of mass of the whole layer,
 #' the output layer will contain a center of mass for the features in each category.
 #'
-#' @param input <chr> or object
+#' @param input <chr> or simple feature object
 #' Input layer. Must be target source or simple feature
 #' @param output <chr>
 #' Destination of output file
@@ -216,7 +260,7 @@ qgis_meancoordinates <- function(input, output, weight = NA, category = NA) {
 #' @description This algorithm takes a points layer and generates a polygon layer containing
 #'  the voronoi polygons corresponding to those input points.
 #'
-#' @param input <chr> or object
+#' @param input <chr> or simple feature object
 #' Input point layer. Must be desination file or simple feature
 #' @param output <chr>
 #' destination of output file

@@ -7,7 +7,7 @@
 qgis_voronoipolygons(input, output, buffer = 0)
 }
 \arguments{
-\item{input}{<chr> or object
+\item{input}{<chr> or simple feature object
 Input point layer. Must be desination file or simple feature}
 
 \item{output}{<chr>

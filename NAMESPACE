@@ -2,6 +2,7 @@
 
 export(qgis_clip)
 export(qgis_countpointsinpolygon)
+export(qgis_fixeddistancebuffer)
 export(qgis_meancoordinates)
 export(qgis_pointslayerfromtable)
 export(qgis_polygoncentroids)
