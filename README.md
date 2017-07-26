@@ -1,5 +1,5 @@
 # mercatoR
-Simple navigation of QGIS, GRASS, SAGA, and GDAL algorithms
+An R package for simple navigation of QGIS, GRASS, SAGA, and GDAL algorithms
 
 # Installation 
 
