@@ -15,9 +15,13 @@ devtools::install_github('smitty1788/mercatoR')
 # Current list of availible Algorithms
 
 ## QGIS
+* Clip
+* Count Points in Polygon
 * Fixed distance buffer
-
-
+* Mean coordinate(s)
+* Points layer from table
+* Polygon centroids
+* Voronoi polygons
 
 ## SAGA
 
