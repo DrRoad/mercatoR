@@ -11,3 +11,16 @@ You can install the latest mercatoR development version from Github with:
 ```{r, eval = FALSE}
 devtools::install_github('smitty1788/mercatoR')
 ```
+
+# Current list of availible Algorithms
+
+## QGIS
+* Fixed distance buffer
+
+
+
+## SAGA
+
+## GDAL
+
+## GRASS
