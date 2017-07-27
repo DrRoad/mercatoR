@@ -26,5 +26,6 @@ devtools::install_github('smitty1788/mercatoR')
 ## SAGA
 
 ## GDAL
+* Warp(Reproject)
 
 ## GRASS
