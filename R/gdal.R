@@ -31,7 +31,7 @@ r_ext <- paste(raster::xmin(r), raster::ymin(r), raster::xmax(r), raster::ymax(r
 param$INPUT <- input
 param$OUTPUT <- output
 param$DEST_SRS <- crs
-param$USE_RASTER_EXTENT <- TRUE
+param$USE_RASTER_EXTENT <- FALSE
 param$RASTER_EXTENT <- r_ext
 
 
