@@ -29,3 +29,4 @@ devtools::install_github('smitty1788/mercatoR')
 * Warp(Reproject)
 
 ## GRASS
+* Slope
